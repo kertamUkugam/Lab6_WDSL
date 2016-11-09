@@ -1,0 +1,77 @@
+<html>
+  <head>
+	<title>Registro</title>
+		<script>
+		function vervalores(){
+		var aux="";
+		var frm = document.getElementById("registro");
+		for (i=0;i<frm.elements.length;i++)
+		{ 
+		aux += "NOMBRE: " + frm.elements[i].name + " "; 
+		aux += "VALOR: " + frm.elements[i].value + "\n" ;
+		} 
+		alert(aux); 
+		}
+		
+		function validacion(){
+			var frm = document.getElementById("registro");
+			for (i=0;i<frm.elements.length;i++)
+			{ 
+				if(i==0 && (/^\s+$/.test(frm.elements[0].value) || frm.elements[0].value.length==0 || frm.elements[0].value == null)){
+					alert("Nombre incorrecto o vacio.");
+					return false;
+				}
+				
+				        expr = /^[a-zA-Z]+\d{3}\@ikasle.ehu\.(eus|es)/g;
+
+				if(i==2 && !(expr.test(frm.elements[1].value))) {
+  					alert("Email incorrecto.");
+  					return false;
+				}
+				if(i==3 && (frm.elements[2].value.length<6 || frm.elements[2].value == null)){
+					alert("Password incorrecto.");
+					return false;
+				}
+				if(i==4 && (!(/^[6|9]{1}\d{8}$/.test(frm.elements[3].value)) || frm.elements[3].value.length==0 || frm.elements[3].value == null)){
+					alert("Telefono incorrecto.");
+					return false;
+				}
+				
+				
+			} 
+			return true;
+		}
+		</script>
+ </head>
+ 
+ <body>
+  <div id='page-wrap'>
+  <header class='main' id='h1'>
+		<h2>Registro</h2>
+	<form action="registrar.php" method="post" id='registro' name='registro' onSubmit='return validacion()'>
+
+             <label>Nombre</label>
+                <input id="registro" name="nombre" type="text"  />
+            <br/>
+           	 <label>Email</label>
+                <input id="registro" name="email" type="text"  />
+            <br/>
+             <label>Password</label>
+                <input id="registro" name="password" type="password"  />
+            <br/>
+             <label>Telefono</label>
+                <input id="registro" name="telefono" type="text"  />
+            <br/>
+             <label>Especialidad</label>
+                <input id="especialidad" name="especialidad" type="text"  />
+            <br/>
+           <button id="resgistro" type="submit" value="submit"> Enviar </button>
+           <br/>
+         
+	</form>
+
+		<span><a href='layout.html'>Inicio</a></spam>
+    </header>
+  </div>
+  </body>
+</html>
